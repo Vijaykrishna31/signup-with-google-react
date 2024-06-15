@@ -58,6 +58,8 @@ function App() {
                 </div>
             ) : (
                 <button className='sign btn btn-primary' onClick={login}>Sign in with Google 🚀 </button>
+            )}
+        </div>
     );
 }
 export default App;
