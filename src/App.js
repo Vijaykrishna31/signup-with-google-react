@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function App() {
     const [ user, setUser ] = useState([]);
-    const [ profile, setProfile ] = useState([]);
+    const [ profile, setProfile ] = useState(null);
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
@@ -37,24 +37,27 @@ function App() {
     };
 
     return (
-        <div className='main'>
-            <h2>React Google Login</h2>
+        <div className='container text-center my-5'>
+            <br />
+            <br />
+            <h2>Google Login - React</h2>
             <br />
             <br />
             {profile ? (
-                <div>
-                    <img src={profile.picture} alt="user profile" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br />
-                    <button className='logout' onClick={logOut}>Log out</button>
+                <div className='card'>
+                    <div className='card-body'>
+                        <img src={profile.picture} alt="user profile" />
+                        <br /><br />
+                        <h3 className='card-title'>User Logged in</h3>
+                        <p className='h4'><b>Name:</b> {profile.name}</p>
+                        <p className='h4'><b>Email Address:</b> {profile.email}</p>
+                        <br />
+                        <br />
+                        <button className='logout btn btn-secondary' onClick={logOut}>Log out</button>
+                    </div>
                 </div>
             ) : (
-                <button className='sign' onClick={login}>Sign in with Google 🚀 </button>
-            )}
-        </div>
+                <button className='sign btn btn-primary' onClick={login}>Sign in with Google 🚀 </button>
     );
 }
 export default App;
